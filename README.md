@@ -50,4 +50,4 @@ The plugin could be customized with:
 * [tmux-spotify](https://github.com/xamut/tmux-spotify)
 
 ## License
-tmux-weather plugin is released under the [MIT License](https://opensource.org/licenses/MIT).
+tmux-weather-gps plugin is released under the [MIT License](https://opensource.org/licenses/MIT).
