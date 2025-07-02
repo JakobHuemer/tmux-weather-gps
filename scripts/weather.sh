@@ -7,6 +7,18 @@ get_weather() {
   local location=$(get_tmux_option "@tmux-weather-location")
   local format=$(get_tmux_option "@tmux-weather-format" 1)
   local units=$(get_tmux_option "@tmux-weather-units" "m")
+  local gps=$(get_tmux_option "@tmux-weather-gps" "false")
+
+  if [[ "$gps" == "true" ]]; then
+    if [[ "$(uname)" == "Darwin" ]]; then
+      if gps=$(CoreLocationCLI --format "%latitude,%longitude"); then
+        location="$gps";
+      fi
+
+    elif [[ "$(uname)" == "Linux" ]]; then
+      echo "GPS on Linux not yet supported!"
+    fi
+  fi
 
   if [ "$units" != "m" ] && [ "$units" != "u" ]; then
     units="m"
